@@ -32,7 +32,7 @@ public class gui{
 		//Apply the null layout
 		pane.setLayout (null);
 		
-		
+
 		//Create fields, buttons, and labels
 		lblPkmnName = new JLabel ("Pokemon Name");
 		txtPkmnName = new JTextField (15);
