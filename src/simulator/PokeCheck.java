@@ -1,23 +1,17 @@
 package simulator;
 
-import java.io.IOException;
-import java.io.FileNotFoundException;
-
 
 public class PokeCheck {
 
 	public static void main(String[] args) {
-
+		
+		String path = "src/Data/Gen1Pokemon.csv";
 		try{
-			new PokeGui();
-		} catch (NullPointerException e)	{
+		PokemonList pokeList = new PokemonList(path);
+		new PokeGui(pokeList);
+		} catch (Exception e)	{
 			e.printStackTrace();//TODO	
-		} catch (FileNotFoundException e)	{
-			e.printStackTrace();//TODO	
-		} catch(IOException e){
-			e.printStackTrace();//TODO
-		} catch(IllegalArgumentException e){
-			e.printStackTrace();//TODO
 		}
 	}
 }
+//TODO Add blank/default constructor for pokemon

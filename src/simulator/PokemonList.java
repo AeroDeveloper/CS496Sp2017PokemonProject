@@ -10,20 +10,14 @@ import java.util.List;
 import objects.PokeMove;
 import objects.Pokemon;
 
-public class pokemonList {
-	List<Pokemon> listPokemon = new ArrayList<Pokemon>();
+public class PokemonList implements Comparable<Pokemon>{
+	List<Pokemon> result = new ArrayList<Pokemon>();
 	
-	public pokemonList(String path) throws FileNotFoundException, IOException, NumberFormatException, IllegalArgumentException{
+	public PokemonList(String path) throws FileNotFoundException, IOException, NumberFormatException, IllegalArgumentException{
 		try{
-			 this.listPokemon = buildPokemonList(readFile(path));
-		} catch (FileNotFoundException e){
-			throw e;//TODO
-		} catch (IOException e){
-			throw e;//TODO
-		} catch (NumberFormatException e){
-			throw e;//TODO
-		} catch (IllegalArgumentException e){
-			throw e;//TODO
+			 this.result = buildPokemonList(readFile(path));
+		} catch (IOException|IllegalArgumentException e){
+			throw e;
 		}
 	}
 
@@ -43,8 +37,6 @@ public class pokemonList {
 			}
 			br.close();
 
-		} catch (FileNotFoundException e) {
-			throw e;
 		} catch (IOException e) {
 			throw e;
 		}
@@ -138,4 +130,19 @@ public class pokemonList {
 		}
 		return pokeList;
 	}
+	
+	public Pokemon searchByName(String name){
+		for(Pokemon current : this.result){
+			if(current.name.compareTo(name) == 0)//TODO implement getters and setters in pokemon object class
+				return current;
+		}
+		return null;//FIXME
+	}
+
+	@Override
+	public int compareTo(Pokemon o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
