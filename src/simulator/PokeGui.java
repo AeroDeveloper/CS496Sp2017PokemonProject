@@ -84,7 +84,7 @@ public class PokeGui{
 			    if(result == null)
 			    	txtPkmnName.setText("ERROR");
 			    else{
-			    	String[] type = result.type;
+			    	String[] type = result.getType1();
 			    	if(type.length == 1){
 						lblType1 = new JLabel("Type: " + type[0]);
 						if(lblType2.isVisible())
@@ -95,11 +95,11 @@ public class PokeGui{
 						lblType2 = new JLabel("Type 2: " + type[1]);
 						//TODO
 			    	}
-					lblAtk = new JLabel("Atk: " + Integer.toString(result.atk));
-					lblDef = new JLabel("Def: " + Integer.toString(result.def));
-					lblSpAtk = new JLabel("Sp.Atk: " + Integer.toString(result.spAtk));
-					lblSpDef = new JLabel("Sp.Def: " + Integer.toString(result.spDef));
-					lblAglty = new JLabel("Agility: " + Integer.toString(result.aglty));
+//					lblAtk = new JLabel("Atk: " + Integer.toString(result.atk));
+//					lblDef = new JLabel("Def: " + Integer.toString(result.def));
+//					lblSpAtk = new JLabel("Sp.Atk: " + Integer.toString(result.spAtk));
+//					lblSpDef = new JLabel("Sp.Def: " + Integer.toString(result.spDef));
+//					lblAglty = new JLabel("Agility: " + Integer.toString(result.aglty));
 					
 			    	frameInitial.setSize (400,100);//TODO
 			    	
