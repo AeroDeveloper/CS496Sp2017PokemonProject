@@ -46,29 +46,25 @@ public class PokemonList implements Comparable<Pokemon>{
 	private List<Pokemon> buildPokemonList(List<String> rawDataList) throws NumberFormatException, IllegalArgumentException{
 		List<Pokemon> pokeList = new ArrayList<Pokemon>();
 
-		int atk,def,spAtk,spDef,aglty;//TODO Implement: id(?), index, hp(?)
+		int id,atk,def,spAtk,spDef,aglty;//TODO Implement: id(?), index, hp(?)
 		String name, type1,type2;//TODO Implement: ability1(?), ability2(?), abilityH(?)
 
 		for(String currLine : rawDataList){
 
 			String[] tokens = currLine.split(",");
 
-			if((name = tokens[2]) == null)
-				throw new IllegalArgumentException("Name not in current entry");
+		try{
+			id = Integer.parseInt(tokens[0]);
+		} catch(NumberFormatException e){
+			throw new NumberFormatException("ID parse fail for next entry");
+		}
+			
+			if((name = tokens[1]) == null)
+				throw new IllegalArgumentException("Name parse for id" );
 
-//			try{//FIXME Do we need this?
-//				id = Integer.parseInt(tokens[0]);
-//			} catch(NumberFormatException e){
-//				throw new NumberFormatException("ID parse fail for " + name);
-//			}
 
-//			try{//FIXME
-//				index = Integer.parseInt(tokens[1]);
-//			} catch(NumberFormatException e){
-//				throw new NumberFormatException("Index parse fail for " + name);
-//			}
 
-			if((type[0] = tokens[4]) == null)
+			if((type1 = tokens[4]) == null)
 				throw new IllegalArgumentException("Type parse fail for" + name);
 
 
