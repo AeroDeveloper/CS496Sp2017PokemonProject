@@ -46,8 +46,8 @@ public class PokemonList implements Comparable<Pokemon>{
 	private List<Pokemon> buildPokemonList(List<String> rawDataList) throws NumberFormatException, IllegalArgumentException{
 		List<Pokemon> pokeList = new ArrayList<Pokemon>();
 
-		int id,atk,def,spAtk,spDef,aglty;//TODO Implement: id(?), index, hp(?)
-		String name, type1,type2;//TODO Implement: ability1(?), ability2(?), abilityH(?)
+		int id,hp,atk,def,spAtk,spDef,spd;//TODO Implement: id(?), index, hp(?)
+		String name,type1,type2;//TODO Implement: ability1(?), ability2(?), abilityH(?)
 
 		for(String currLine : rawDataList){
 
@@ -60,67 +60,56 @@ public class PokemonList implements Comparable<Pokemon>{
 		}
 			
 			if((name = tokens[1]) == null)
-				throw new IllegalArgumentException("Name parse for id" );
+				throw new IllegalArgumentException("Name parse for id" + Integer.toString(id));
 
 
 
-			if((type1 = tokens[4]) == null)
+			if((type1 = tokens[2]) == null)
 				throw new IllegalArgumentException("Type parse fail for" + name);
 
 
-			if((tokens[5]).isEmpty())//May not have second type
-				type[1]= null;
+			if((tokens[3]).isEmpty())//May not have second type
+				type2= null;
 			else
-				type[1]= tokens[5];
-
-//			if((ability1 = tokens[6]) == null) FIXME: Do we need these?
-//				throw new IllegalArgumentException("Ability parse fail for" + name);
-//
-//			if(!((tokens[7]).isEmpty()))
-//				ability2 = tokens[7];
-//
-//
-//			if(!((tokens[8]).isEmpty()))
-//				abilityH = tokens[8];
-
-//			try{//FIXME
-//				hp = Integer.parseInt(tokens[9]);
-//			} catch(NumberFormatException e){
-//				throw new NumberFormatException("HP parse fail for " + name);
-//			}
+				type2 = tokens[3];
 
 			try{
-				atk = Integer.parseInt(tokens[10]);
+				hp = Integer.parseInt(tokens[4]);
+			} catch(NumberFormatException e){
+				throw new NumberFormatException("HP parse fail for " + name);
+			}
+			
+			try{
+				atk = Integer.parseInt(tokens[5]);
 			} catch(NumberFormatException e){
 				throw new NumberFormatException("ATK parse fail for " + name);
 			}
 
 			try{
-				def = Integer.parseInt(tokens[11]);
+				def = Integer.parseInt(tokens[6]);
 			} catch(NumberFormatException e){
 				throw new NumberFormatException("DEF parse fail for " + name);
 			}
 
 			try{
-				spAtk = Integer.parseInt(tokens[12]);
+				spAtk = Integer.parseInt(tokens[7]);
 			} catch(NumberFormatException e){
 				throw new NumberFormatException("SP.ATK parse fail for " + name);
 			}
 
 			try{
-				spDef = Integer.parseInt(tokens[13]);
+				spDef = Integer.parseInt(tokens[8]);
 			} catch(NumberFormatException e){
 				throw new NumberFormatException("SP.DEF parse fail for " + name);
 			}
 
 			try{
-				aglty = Integer.parseInt(tokens[14]);
+				spd = Integer.parseInt(tokens[9]);
 			} catch(NumberFormatException e){
 				throw new NumberFormatException("SPD spec parse fail for " + name);
 			}
-			List<PokeMove> pokeMoveList= null;//FIXME FOR TESTING
-			Pokemon currPokemon = new Pokemon(name,type,atk,def,spAtk,spDef,aglty,1,pokeMoveList);//FIXME: FOR TESTING
-			//Pokemon currPokemon = new Pokemon(id,index,name,type1,type2,ability1,ability2,abilityH,hp,atk,def,spAtk,spDef,spd);
+			
+			Pokemon currPokemon = new Pokemon(name, type1, type2, hp, atk, def,spAtk,spDef,spd);//FIXME: FOR TESTING
 			pokeList.add(currPokemon);
 		}
 		return pokeList;
