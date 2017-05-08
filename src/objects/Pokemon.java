@@ -3,56 +3,32 @@ package objects;
 import java.util.List;
 
 public class Pokemon {
-	String name;
-	String[] type;
-	int atk, def, spAtk, spDef, aglty;//TODO Determine if Static
-	int gen;
-	int startLvl;
-	Pokemon prevEvo;
-	List<PokeMove> allMoves;//TODO Will contain moves specific to this Pokemon (not evolutionary predecessors) 
+	private String name;
+	private String type1, type2;
+	private int hp, atk, def, spAtk, spDef, speed;
+
 	
-	
-	//No Evolutions
-	public Pokemon(String name, String[] type, int atk, int def, int spAtk, int spDef, int aglty,int gen, List<PokeMove> allMoves){
+	public Pokemon(String name, String type1, String type2, int hp, int atk, int def, int spAtk, int spDef, int speed){
 		this.name = name;
-		this.gen = gen;
-		
-		this.type = type;
+
+		this.type1 = type1;
+		this.type2 = type2;
+		this.hp = hp;
 		this.atk = atk;
 		this.def = def;
 		this.spAtk = spAtk;
 		this.spDef = spDef;
-		this.aglty = aglty;
+		this.speed = speed;
 		
-		this.startLvl = 0;
-		
-		this.allMoves = allMoves;
 	}
 	
-	//Has predecessor in evolution
-	public Pokemon(String name, String[] type, int atk, int def, int spAtk, int spDef, int aglty,int gen, int startLvl, Pokemon prevEvo, List<PokeMove> allMoves){
-		this.name = name;
-		this.gen = gen;
-		
-		this.type = type;
-		this.atk = atk;
-		this.def = def;
-		this.spAtk = spAtk;
-		this.spDef = spDef;
-		this.aglty = aglty;
-		
-		this.startLvl = startLvl;
-		this.prevEvo = prevEvo;
-		
-		this.allMoves = allMoves;
-	}
+	public String getType1(){}
+	public String getType2(){}
+	public int getHp(){}
+	public int getAtk(){}
+	public int getDef(){}
+	public int getSpAtk(){}
+	public int getSpDef(){}
+	public int getSpeed(){}
 	
-	
-
-	
-
-	
-	
-	
-
 }
