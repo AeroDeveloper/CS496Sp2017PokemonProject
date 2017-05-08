@@ -22,13 +22,29 @@ public class Pokemon {
 		
 	}
 	
-	public String getType1(){}
-	public String getType2(){}
-	public int getHp(){}
-	public int getAtk(){}
-	public int getDef(){}
-	public int getSpAtk(){}
-	public int getSpDef(){}
-	public int getSpeed(){}
+	public String getType1(){
+		return this.type1;
+	}
+	public String getType2(){
+		return this.type2
+	}
+	public int getHp(){
+		retunr this.hp;
+	}
+	public int getAtk(){
+		return this.atk;
+	}
+	public int getDef(){
+		return this.def;
+	}
+	public int getSpAtk(){
+		return this.spAtk
+	}
+	public int getSpDef(){
+		return this.spDef;
+	}
+	public int getSpeed(){
+		return this.speed;
+	}
 	
 }
