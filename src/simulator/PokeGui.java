@@ -3,6 +3,14 @@ package simulator;
 import java.awt.Container;
 import java.awt.Insets;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import objects.Pokemon;
+import objects.PokeMove;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +20,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 //Main class
-public class gui{
+public class PokeGui{
 	//Declare variables
 	static JFrame frameInitial;
 	static Container pane;
@@ -21,7 +29,7 @@ public class gui{
 	static JTextField txtPkmnName, txtPkmnLevel;
 	static Insets insets;
 
-	public static void main (String args[]){
+	public PokeGui() throws NullPointerException, FileNotFoundException, IOException, IllegalArgumentException{
 		//Create the frame
 		frameInitial = new JFrame ("Pokedex: Optimal Opponent Finder ALPHA");
 		//Set its size to 500x100 pixels
@@ -31,6 +39,20 @@ public class gui{
 		insets = pane.getInsets();
 		//Apply the null layout
 		pane.setLayout (null);
+		
+		String path = "src/Data/Gen1Pokemon.csv";
+		
+		List<Pokemon> masterList = new ArrayList<Pokemon>();
+		try{
+			pokemonList pokeList = new pokemonList(path);
+			masterList = pokeList.listPokemon;
+		} catch (FileNotFoundException e)	{
+			throw e;
+		} catch(IOException e){
+			throw e;
+		} catch(IllegalArgumentException e){
+			throw e;
+		}
 		
 
 		//Create fields, buttons, and labels
