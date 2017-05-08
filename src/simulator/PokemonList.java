@@ -47,15 +47,14 @@ public class PokemonList implements Comparable<Pokemon>{
 		List<Pokemon> pokeList = new ArrayList<Pokemon>();
 
 		int atk,def,spAtk,spDef,aglty;//TODO Implement: id(?), index, hp(?)
-		String name;//TODO Implement: ability1(?), ability2(?), abilityH(?)
-		String[] type = new String[2];
+		String name, type1,type2;//TODO Implement: ability1(?), ability2(?), abilityH(?)
 
 		for(String currLine : rawDataList){
 
 			String[] tokens = currLine.split(",");
 
 			if((name = tokens[2]) == null)
-				throw new IllegalArgumentException("Name not in current entry");//TODO find out what "forme" from the data file header means
+				throw new IllegalArgumentException("Name not in current entry");
 
 //			try{//FIXME Do we need this?
 //				id = Integer.parseInt(tokens[0]);
@@ -133,7 +132,7 @@ public class PokemonList implements Comparable<Pokemon>{
 	
 	public Pokemon searchByName(String name){
 		for(Pokemon current : this.result){
-			if(current.name.compareTo(name) == 0)//TODO implement getters and setters in pokemon object class
+			if((current.name).compareTo(name) == 0)//TODO implement getters and setters in pokemon object class
 				return current;
 		}
 		return null;//FIXME
