@@ -23,7 +23,5 @@ public enum Element {
 
     public final String name;
 
-    Element(String name) {
-        this.name = name;
-    }
+    Element(String name) { this.name = name; }
 }

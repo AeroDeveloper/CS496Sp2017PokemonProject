@@ -2,14 +2,12 @@ package objects;
 
 import java.util.HashMap;
 
-public class PokemonType {
+public class PokeType{
 	String name;
 	HashMap<Element, Double> multipliers = new HashMap<Element, Double>();
 	Element element;
 
-	PokemonType(Builder p) {
-		name = p.name; multipliers = p.multipliers; element = p.element;
-	}
+	PokeType(Builder p) { name = p.name; multipliers = p.multipliers; element = p.element;	}
 
 	static class Builder {
 		final String name;
@@ -19,10 +17,7 @@ public class PokemonType {
 		public Builder(Element element) {
 			this.name = element.name;
 			this.element = element;
-			// Default values
-			for (Element e : Element.values()) {
-				multipliers.put(e, 1.0);
-			}
+			for (Element e : Element.values()) { multipliers.put(e, 1.0); }
 		}
 
 		public Builder vulnerableTo(Element... elements) {
@@ -37,9 +32,7 @@ public class PokemonType {
 			for (Element e : elements) { multipliers.put(e, 0.5); }
 			return this;
 		}
-		public PokemonType generate() { return new PokemonType(this); }
+		public PokeType generate() { return new PokeType(this); }
 	}
-	public HashMap<Element, Double> getMultipliers() {
-		return this.multipliers;
-	}
+	public HashMap<Element, Double> getMultipliers() { return this.multipliers;	}
 }

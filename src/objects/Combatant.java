@@ -17,9 +17,9 @@ public class Combatant {
 	}
 	
 	public List<Move> chooseMoves(Pokemon pokemon,int lvl){//TODO
-		if(pokemon.startLvl != 0){//If it evolves from something we need to get their move list
-			return null;
-		}
+//		if(pokemon.startLvl != 0){//If it evolves from something we need to get their move list
+//			return null;
+//		}
 		return null;
 	}
 }
