@@ -37,9 +37,10 @@ public class Pokemon implements Comparable<Pokemon> {
 	}
 
 	@Override
-	public int compareTo(Pokemon o) {//FIXME
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(String inquiryName) {
+
+		return (this.getName).compareTo(inquiryName);
+
 	}
 	
 	
