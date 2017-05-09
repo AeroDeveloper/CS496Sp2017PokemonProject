@@ -68,6 +68,7 @@ public class PokeGui{
 		pane.add (txtSearchField);
 		//		pane.add (txtPkmnLevel);
 		pane.add (btnSearch);
+		//TEST EDIT
 
 
 		//Place all components
