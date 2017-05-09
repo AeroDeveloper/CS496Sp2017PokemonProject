@@ -1,0 +1,200 @@
+if (inputType1 = 'Normal' && this.inputType1 = 'Ghost')
+    cv1 = cv1 * 0;
+else if (inputType1 = 'Normal' && this.inputType1 = 'Rock' || 'Steel')
+    cv1 = cv1 * 0.5;
+else if (inputType1 = 'Fire' && this.inputType1 = 'Fire' || 'Water' || 'Rock' || 'Dragon')
+    cv1 = cv1 * 0.5;
+else if (inputType1 = 'Water' && this.inputType1 = 'Water'||'Grass'||'Dragon')
+    cv1 = cv1 * .5;
+else if (inputType1 = 'Electric' && this.inputType1 = 'Ground')
+        cv1 = cv1 * 0;
+else if (inputType1 = 'Electric' && this.inputType1 = 'Electric'||'Grass'||'Dragon')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Grass' && this.inputType1 = 'Fire'||'Grass'||'Poison'||'Flying'||'Bug'||'Dragon'||'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Ice' && this.inputType1 = 'Fire'||'Water'||'Ice'||'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Fighting' && this.inputType1 = 'Posion'||'Psychic'||'Flying'||'Bug'||'Fairy')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Poison' && this.inputType1 = 'Steel')
+        cv1 = cv1 * .0;
+else if (inputType1 = 'Poison' && this.inputType1 = 'Poison' || 'Ground' || 'Rock' || 'Ghost')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Ground' && this.inputType1 = 'Flying')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Flying' && this.inputType1 = 'Electric' || 'Rock' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Psychic' && this.inputType1 = 'Dark')
+        cv1 = cv1 * 0;
+else if (inputType1 = 'Psychic' && this.inputType1 = 'Psychic' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Bug' && this.inputType1 = 'Fire' || 'Fighting' || 'Poison' || 'Flying' || 'Ghost' || 'Steel' || 'Fairy')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Rock' && this.inputType1 = 'Fighting' || 'Ground' || 'Rock' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Ghost' && this.inputType1 = 'Normal')
+        cv1 = cv1 * 0;
+else if (inputType1 = 'Ghost' && this.inputType1 = 'Dark')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Dragon' && this.inputType1 = 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Dark' && this.inputType1 = 'Fighting' || 'Dark' || 'Fairy')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Steel' && this.inputType1 = 'Fire' || 'Water' || 'Electric' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Fairy' && this.inputType1 = 'Poison' || 'Fire' || 'Steel')
+        cv1 = cv1 * .5;
+else
+    cv1 = cv1;
+    
+    
+if (inputType2 = 'Normal' && this.inputType1 = 'Ghost')
+        cv2 = cv2 * 0;     
+else if (inputType2 = 'Normal' && this.inputType1 = 'Rock' || 'Steel')
+        cv2 = cv2 * 0.5;
+        
+else if (inputType2 = 'Fire' && this.inputType1 = 'Fire' || 'Water' || 'Rock' || 'Dragon')
+        cv2 = cv2 * 0.5;
+else if (inputType2 = 'Water' && this.inputType1 = 'Water'||'Grass'||'Dragon')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Electric' && this.inputType1 = 'Ground')
+        cv2 = cv2 * 0;        
+else if (inputType2 = 'Electric' && this.inputType1 = 'Electric'||'Grass'||'Dragon')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Grass' && this.inputType1 = 'Fire'||'Grass'||'Poison'||'Flying'||'Bug'||'Dragon'||'Steel')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Ice' && this.inputType1 = 'Fire'||'Water'||'Ice'||'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Fighting' && this.inputType1 = 'Posion'||'Psychic'||'Flying'||'Bug'||'Fairy')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Poison' && this.inputType1 = 'Steel')
+        cv2 = cv2 * .0;       
+else if (inputType2 = 'Poison' && this.inputType1 = 'Poison' || 'Ground' || 'Rock' || 'Ghost')
+        cv2 = cv2 * .5;     
+else if (inputType2 = 'Ground' && this.inputType1 = 'Flying')
+        cv2 = cv2 * .5;     
+else if (inputType2 = 'Flying' && this.inputType1 = 'Electric' || 'Rock' || 'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Psychic' && this.inputType1 = 'Dark')
+        cv2 = cv2 * 0;       
+else if (inputType2 = 'Psychic' && this.inputType1 = 'Psychic' || 'Steel')
+        cv2 = cv2 * .5;      
+else if (inputType2 = 'Bug' && this.inputType1 = 'Fire' || 'Fighting' || 'Poison' || 'Flying' || 'Ghost' || 'Steel' || 'Fairy')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Rock' && this.inputType1 = 'Fighting' || 'Ground' || 'Rock' || 'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Ghost' && this.inputType1 = 'Normal')
+        cv2 = cv2 * 0;   
+else if (inputType2 = 'Ghost' && this.inputType1 = 'Dark')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Dragon' && this.inputType1 = 'Steel')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Dark' && this.inputType1 = 'Fighting' || 'Dark' || 'Fairy')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Steel' && this.inputType1 = 'Fire' || 'Water' || 'Electric' || 'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Fairy' && this.inputType1 = 'Poison' || 'Fire' || 'Steel')
+        cv2 = cv2 * .5;       
+else
+        cv2 = cv2;
+        
+if (inputType1 = 'Normal' && this.inputType2 = 'Ghost')
+    cv1 = cv1 * 0;
+else if (inputType1 = 'Normal' && this.inputType2 = 'Rock' || 'Steel')
+    cv1 = cv1 * 0.5;
+else if (inputType1 = 'Fire' && this.inputType2 = 'Fire' || 'Water' || 'Rock' || 'Dragon')
+    cv1 = cv1 * 0.5;
+else if (inputType1 = 'Water' && this.inputType2 = 'Water'||'Grass'||'Dragon')
+    cv1 = cv1 * .5;
+else if (inputType1 = 'Electric' && this.inputType2 = 'Ground')
+        cv1 = cv1 * 0;
+else if (inputType1 = 'Electric' && this.inputType2 = 'Electric'||'Grass'||'Dragon')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Grass' && this.inputType2 = 'Fire'||'Grass'||'Poison'||'Flying'||'Bug'||'Dragon'||'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Ice' && this.inputType2 = 'Fire'||'Water'||'Ice'||'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Fighting' && this.inputType2 = 'Posion'||'Psychic'||'Flying'||'Bug'||'Fairy')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Poison' && this.inputType2 = 'Steel')
+        cv1 = cv1 * .0;
+else if (inputType1 = 'Poison' && this.inputType2 = 'Poison' || 'Ground' || 'Rock' || 'Ghost')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Ground' && this.inputType2 = 'Flying')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Flying' && this.inputType2 = 'Electric' || 'Rock' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Psychic' && this.inputType2 = 'Dark')
+        cv1 = cv1 * 0;
+else if (inputType1 = 'Psychic' && this.inputType2 = 'Psychic' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Bug' && this.inputType2 = 'Fire' || 'Fighting' || 'Poison' || 'Flying' || 'Ghost' || 'Steel' || 'Fairy')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Rock' && this.inputType2 = 'Fighting' || 'Ground' || 'Rock' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Ghost' && this.inputType2 = 'Normal')
+        cv1 = cv1 * 0;
+else if (inputType1 = 'Ghost' && this.inputType2 = 'Dark')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Dragon' && this.inputType2 = 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Dark' && this.inputType2 = 'Fighting' || 'Dark' || 'Fairy')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Steel' && this.inputType2 = 'Fire' || 'Water' || 'Electric' || 'Steel')
+        cv1 = cv1 * .5;
+else if (inputType1 = 'Fairy' && this.inputType2 = 'Poison' || 'Fire' || 'Steel')
+        cv1 = cv1 * .5;
+else
+    cv1 = cv1;
+    
+    
+if (inputType2 = 'Normal' && this.inputType2 = 'Ghost')
+        cv2 = cv2 * 0;     
+else if (inputType2 = 'Normal' && this.inputType2 = 'Rock' || 'Steel')
+        cv2 = cv2 * 0.5;
+        
+else if (inputType2 = 'Fire' && this.inputType2 = 'Fire' || 'Water' || 'Rock' || 'Dragon')
+        cv2 = cv2 * 0.5;
+else if (inputType2 = 'Water' && this.inputType2 = 'Water'||'Grass'||'Dragon')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Electric' && this.inputType2 = 'Ground')
+        cv2 = cv2 * 0;        
+else if (inputType2 = 'Electric' && this.inputType2 = 'Electric'||'Grass'||'Dragon')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Grass' && this.inputType2 = 'Fire'||'Grass'||'Poison'||'Flying'||'Bug'||'Dragon'||'Steel')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Ice' && this.inputType2 = 'Fire'||'Water'||'Ice'||'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Fighting' && this.inputType2 = 'Posion'||'Psychic'||'Flying'||'Bug'||'Fairy')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Poison' && this.inputType2 = 'Steel')
+        cv2 = cv2 * .0;       
+else if (inputType2 = 'Poison' && this.inputType2 = 'Poison' || 'Ground' || 'Rock' || 'Ghost')
+        cv2 = cv2 * .5;     
+else if (inputType2 = 'Ground' && this.inputType2 = 'Flying')
+        cv2 = cv2 * .5;     
+else if (inputType2 = 'Flying' && this.inputType2 = 'Electric' || 'Rock' || 'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Psychic' && this.inputType2 = 'Dark')
+        cv2 = cv2 * 0;       
+else if (inputType2 = 'Psychic' && this.inputType2 = 'Psychic' || 'Steel')
+        cv2 = cv2 * .5;      
+else if (inputType2 = 'Bug' && this.inputType2 = 'Fire' || 'Fighting' || 'Poison' || 'Flying' || 'Ghost' || 'Steel' || 'Fairy')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Rock' && this.inputType2 = 'Fighting' || 'Ground' || 'Rock' || 'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Ghost' && this.inputType2 = 'Normal')
+        cv2 = cv2 * 0;   
+else if (inputType2 = 'Ghost' && this.inputType2 = 'Dark')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Dragon' && this.inputType2 = 'Steel')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Dark' && this.inputType2 = 'Fighting' || 'Dark' || 'Fairy')
+        cv2 = cv2 * .5;        
+else if (inputType2 = 'Steel' && this.inputType2 = 'Fire' || 'Water' || 'Electric' || 'Steel')
+        cv2 = cv2 * .5;       
+else if (inputType2 = 'Fairy' && this.inputType2 = 'Poison' || 'Fire' || 'Steel')
+        cv2 = cv2 * .5;       
+else
+        cv2 = cv2;
+cvtotal = cv1 + cv2
