@@ -35,9 +35,9 @@ public class PokeGui{
 		masterList = pl.result;
 
 		//Create the frame
-		frameInitial = new JFrame ("Pokedex: Optimal Opponent Finder ALPHA");
+		frameInitial = new JFrame ("Pokedex: Optimal Opponent Finder BETA");
 		//Set its size to 500x100 pixels
-		frameInitial.setSize (400,100);
+		frameInitial.setSize (350,75);
 		//Prepare panel
 		pane = frameInitial.getContentPane();
 		insets = pane.getInsets();
@@ -57,7 +57,7 @@ public class PokeGui{
 		lblSpd = new JLabel("");
 
 		//Create fields, buttons, and labels
-		lblSearchTerm = new JLabel ("Pokemon Name");
+		lblSearchTerm = new JLabel ("Search by Name");
 		txtSearchField = new JTextField (15);
 		btnSearch = new JButton ("Search");
 
@@ -95,9 +95,8 @@ public class PokeGui{
 					return;
 				} else{
 					txtSearchField.setText("");
-					//FIXME
 					updateResultsLabels(result.getId(), result.getName(),result.getType1(),result.getType2(),result.getHp(),result.getAtk(),result.getDef(),result.getSpAtk(),result.getSpDef(),result.getSpeed());
-					frameInitial.setSize (400,100);//TODO
+					
 				}
 
 			}
