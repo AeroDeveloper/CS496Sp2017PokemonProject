@@ -23,7 +23,7 @@ public class PokeGui{
 	static JFrame frameInitial;
 	static Container pane;
 	static JButton btnSearch;
-	static JLabel lblId,lblName,lblSearchTerm,lblType1,lblType2,lblHp,lblAtk,lblDef,lblSpAtk,lblSpDef,lblSpd;
+	static JLabel lblId,lblName,lblSearch,lblType1,lblType2,lblHp,lblAtk,lblDef,lblSpAtk,lblSpDef,lblSpd;
 	static JTextField txtSearchField;//txtPkmnLevel
 	static Insets insets;
 
@@ -36,16 +36,21 @@ public class PokeGui{
 		//Create the frame
 		frameInitial = new JFrame ("Pokedex: Optimal Opponent Finder BETA");
 		//Set its size to 500x100 pixels
-		frameInitial.setSize (350,75);
+		frameInitial.setSize (375,75);
 		//Prepare panel
 		pane = frameInitial.getContentPane();
 		insets = pane.getInsets();
 		//Apply the null layout
 		pane.setLayout (null);
 
+
+
+		//Create fields, buttons, and labels
+		lblSearch = new JLabel ("Search by Name");
+		txtSearchField = new JTextField (15);
+		btnSearch = new JButton ("Search");
 		lblId = new JLabel("");
 		lblName = new JLabel("");
-		lblSearchTerm = new JLabel("");
 		lblType1 = new JLabel("");
 		lblType2 = new JLabel("");
 		lblHp = new JLabel("");
@@ -55,24 +60,16 @@ public class PokeGui{
 		lblSpDef = new JLabel("");
 		lblSpd = new JLabel("");
 
-		//Create fields, buttons, and labels
-		lblSearchTerm = new JLabel ("Search by Name");
-		txtSearchField = new JTextField (15);
-		btnSearch = new JButton ("Search");
 
-
-		//Add all components to panel
-		pane.add (lblSearchTerm);
-		//		pane.add (lblPkmnLvl);
+		//Add initial components to panel
+		pane.add (lblSearch);
 		pane.add (txtSearchField);
-		//		pane.add (txtPkmnLevel);
 		pane.add (btnSearch);
-		//TEST EDIT
 
 
 		//Place all components
-		lblSearchTerm.setBounds (insets.left + 5, insets.top + 5, lblSearchTerm.getPreferredSize().width, lblSearchTerm.getPreferredSize().height);
-		txtSearchField.setBounds (lblSearchTerm.getX() + lblSearchTerm.getWidth() + 5, insets.top + 5, txtSearchField.getPreferredSize().width, txtSearchField.getPreferredSize().height);
+		lblSearch.setBounds (insets.left + 5, insets.top + 5, lblSearch.getPreferredSize().width, lblSearch.getPreferredSize().height);
+		txtSearchField.setBounds (lblSearch.getX() + lblSearch.getWidth() + 5, insets.top + 5, txtSearchField.getPreferredSize().width, txtSearchField.getPreferredSize().height);
 
 		//lblPkmnLvl.setBounds (txtPkmnName.getX() + txtPkmnName.getWidth() + 5, insets.top + 5, lblPkmnLvl.getPreferredSize().width, lblPkmnLvl.getPreferredSize().height);
 		//txtPkmnLevel.setBounds (lblPkmnLvl.getX() + lblPkmnLvl.getWidth() + 5, insets.top + 5, txtPkmnLevel.getPreferredSize().width, txtPkmnLevel.getPreferredSize().height);
@@ -82,6 +79,10 @@ public class PokeGui{
 
 		frameInitial.setVisible (true);
 
+		frameInitial.getRootPane().setDefaultButton(btnSearch);
+		
+		
+		
 		btnSearch.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)

@@ -23,7 +23,6 @@ public class Pokemon implements Comparable<Pokemon> {
 		this.cv1 = 1;
 		this.cv2 = 1;
 		this.cvTotal = 1;
-		
 	}
 	
 	public int getId(){ return this.id; }
