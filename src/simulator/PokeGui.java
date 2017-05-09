@@ -24,13 +24,14 @@ public class PokeGui{
 	static JFrame frameInitial;
 	static Container pane;
 	static JButton btnSearch;
-	static JLabel lblId,lblPkmnName,lblType1,lblType2,lblAtk,lblDef,lblSpAtk,lblSpDef,lblSpd;
-	static JTextField txtPkmnName;//txtPkmnLevel
+	static JLabel lblId,lblName,lblSearchTerm,lblType1,lblType2,lblHp,lblAtk,lblDef,lblSpAtk,lblSpDef,lblSpd;
+	static JTextField txtSearchField;//txtPkmnLevel
 	static Insets insets;
 
 	public List<Pokemon> masterList;
 
 	public PokeGui(PokemonList pl) throws NullPointerException, IOException, IllegalArgumentException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
+
 		masterList = pl.result;
 
 		//Create the frame
@@ -43,33 +44,41 @@ public class PokeGui{
 		//Apply the null layout
 		pane.setLayout (null);
 
-
+		lblId = new JLabel("");
+		lblName = new JLabel("");
+		lblSearchTerm = new JLabel("");
+		lblType1 = new JLabel("");
+		lblType2 = new JLabel("");
+		lblHp = new JLabel("");
+		lblAtk = new JLabel("");
+		lblDef = new JLabel("");
+		lblSpAtk = new JLabel("");
+		lblSpDef = new JLabel("");
+		lblSpd = new JLabel("");
 
 		//Create fields, buttons, and labels
-		lblPkmnName = new JLabel ("Pokemon Name");
-		txtPkmnName = new JTextField (15);
-		//		lblPkmnLvl = new JLabel ("Level");
-		//		txtPkmnLevel = new JTextField  (3);
+		lblSearchTerm = new JLabel ("Pokemon Name");
+		txtSearchField = new JTextField (15);
 		btnSearch = new JButton ("Search");
 
 
 		//Add all components to panel
-		pane.add (lblPkmnName);
+		pane.add (lblSearchTerm);
 		//		pane.add (lblPkmnLvl);
-		pane.add (txtPkmnName);
+		pane.add (txtSearchField);
 		//		pane.add (txtPkmnLevel);
 		pane.add (btnSearch);
 
 
 		//Place all components
-		lblPkmnName.setBounds (insets.left + 5, insets.top + 5, lblPkmnName.getPreferredSize().width, lblPkmnName.getPreferredSize().height);
-		txtPkmnName.setBounds (lblPkmnName.getX() + lblPkmnName.getWidth() + 5, insets.top + 5, txtPkmnName.getPreferredSize().width, txtPkmnName.getPreferredSize().height);
+		lblSearchTerm.setBounds (insets.left + 5, insets.top + 5, lblSearchTerm.getPreferredSize().width, lblSearchTerm.getPreferredSize().height);
+		txtSearchField.setBounds (lblSearchTerm.getX() + lblSearchTerm.getWidth() + 5, insets.top + 5, txtSearchField.getPreferredSize().width, txtSearchField.getPreferredSize().height);
 
 		//lblPkmnLvl.setBounds (txtPkmnName.getX() + txtPkmnName.getWidth() + 5, insets.top + 5, lblPkmnLvl.getPreferredSize().width, lblPkmnLvl.getPreferredSize().height);
 		//txtPkmnLevel.setBounds (lblPkmnLvl.getX() + lblPkmnLvl.getWidth() + 5, insets.top + 5, txtPkmnLevel.getPreferredSize().width, txtPkmnLevel.getPreferredSize().height);
 
 		//btnSearch.setBounds (txtPkmnLevel.getX() + txtPkmnLevel.getWidth() + 5, insets.top + 5, btnSearch.getPreferredSize().width, btnSearch.getPreferredSize().height);
-		btnSearch.setBounds (txtPkmnName.getX() + txtPkmnName.getWidth() + 5, insets.top + 5, btnSearch.getPreferredSize().width, btnSearch.getPreferredSize().height);
+		btnSearch.setBounds (txtSearchField.getX() + txtSearchField.getWidth() + 5, insets.top + 5, btnSearch.getPreferredSize().width, btnSearch.getPreferredSize().height);
 
 		frameInitial.setVisible (true);
 
@@ -77,38 +86,43 @@ public class PokeGui{
 		{
 			public void actionPerformed(ActionEvent e)
 			{				
-				String nameInquiry = txtPkmnName.getText();
+				String nameInquiry = txtSearchField.getText();
 
 				Pokemon result = pl.searchByName(nameInquiry);
-				if(result == null)
-					txtPkmnName.setText("ERROR");
-				else{
-					lblId.setText("ID: " + result.getID());
-					if(result.getType2() == null){
-						lblType1.setText("Type: " + result.getType1());
-						if(lblType2.isVisible())
-							lblType2.setVisible(false);
-					} else{
-						lblType1.setText("Type 1: " + result.getType1());
-						lblType2.setText("Type 2: " + result.getType2());
-					}
-				
-				}
-
-					//					lblAtk = new JLabel("Atk: " + Integer.toString(result.atk));
-					//					lblDef = new JLabel("Def: " + Integer.toString(result.def));
-					//					lblSpAtk = new JLabel("Sp.Atk: " + Integer.toString(result.spAtk));
-					//					lblSpDef = new JLabel("Sp.Def: " + Integer.toString(result.spDef));
-					//					lblAglty = new JLabel("Agility: " + Integer.toString(result.aglty));
-
+				if(result == null){
+					txtSearchField.setText("ERROR");
+					
+					return;
+				} else{
+					txtSearchField.setText("");
+					//FIXME
+					updateResultsLabels(result.getId(), result.getName(),result.getType1(),result.getType2(),result.getHp(),result.getAtk(),result.getDef(),result.getSpAtk(),result.getSpDef(),result.getSpeed());
 					frameInitial.setSize (400,100);//TODO
-
 				}
-
-
 
 			}
-		});
+
+			private void updateResultsLabels(int id,String name,String type1,String type2, int hp,int atk,int def,int spAtk,int spDef,int spd) {
+				lblId.setText("ID: " + Integer.toString(id));
+				lblName.setText("Name: " + name);
+				
+				if(type2 == null){
+					lblType1.setText("Type: " + type1);
+					if(lblType2.isVisible())
+						lblType2.setVisible(false);
+				} else{
+					lblType1.setText("Type 1: " + type1);
+					lblType2.setText("Type 2: " + type2);
+				}
+				
+				lblHp.setText("HP: " + Integer.toString(hp));
+				lblAtk.setText("Atk: " + Integer.toString(atk));
+				lblDef.setText("Def: " + Integer.toString(def));
+				lblSpAtk.setText("Sp. Atk: " + Integer.toString(spAtk));
+				lblSpDef.setText("Sp. Def: " + Integer.toString(spDef));
+				lblSpd.setText("Spd: " + Integer.toString(spd));
+			}
+	});
 
 
 		//Set Look and Feel
@@ -116,6 +130,6 @@ public class PokeGui{
 		catch (ClassNotFoundException|InstantiationException|IllegalAccessException|UnsupportedLookAndFeelException e) {
 			throw e;
 		}
-	}
+}
 
 }
