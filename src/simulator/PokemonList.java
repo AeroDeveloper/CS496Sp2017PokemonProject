@@ -10,7 +10,7 @@ import java.util.List;
 import objects.PokeMove;
 import objects.Pokemon;
 
-public class PokemonList implements Comparable<Pokemon>{
+public class PokemonList{
 	List<Pokemon> result = new ArrayList<Pokemon>();
 	
 	public PokemonList(String path) throws FileNotFoundException, IOException, NumberFormatException, IllegalArgumentException{
@@ -116,17 +116,6 @@ public class PokemonList implements Comparable<Pokemon>{
 	}
 	
 	public Pokemon searchByName(String name){
-		for(Pokemon current : this.result){
-			if((current.getName()).compareTo(name) == 0)//TODO implement getters and setters in pokemon object class
-				return current;
-		}
-		return null;//FIXME
+		return this.contains(name);
 	}
-
-	@Override
-	public int compareTo(Pokemon o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 }

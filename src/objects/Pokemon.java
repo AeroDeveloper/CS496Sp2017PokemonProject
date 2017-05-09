@@ -1,7 +1,7 @@
 package objects;
 
 
-public class Pokemon {
+public class Pokemon implements Comparable<Pokemon> {
 	private String name;
 	private String type1, type2;
 	private int id, hp, atk, def, spAtk, spDef, speed;
@@ -32,11 +32,13 @@ public class Pokemon {
 	public int getSpDef(){ return this.spDef; }
 	public int getSpeed(){ return this.speed; }
 	
+	public int compareTo(String name) {
+		return ((this.getName()).compareTo(name));
+	}
+
 	@Override
-	public int compareTo(Pokemon o1) {
+	public int compareTo(Pokemon o) {//FIXME
 		// TODO Auto-generated method stub
-		
-		
 		return 0;
 	}
 	

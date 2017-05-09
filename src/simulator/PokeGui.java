@@ -4,11 +4,10 @@ import java.awt.Container;
 import java.awt.Insets;
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.Hashtable;
+
 import java.util.List;
 
 import objects.Pokemon;
-
 
 
 import javax.swing.JButton;
