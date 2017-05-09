@@ -5,12 +5,13 @@ import java.util.List;
 public class Pokemon {
 	private String name;
 	private String type1, type2;
-	private int hp, atk, def, spAtk, spDef, speed;
-
+	private int hp, atk, def, spAtk, spDef, speed, id;
 	
-	public Pokemon(String name, String type1, String type2, int hp, int atk, int def, int spAtk, int spDef, int speed){
+	
+	public Pokemon(int id, String name, String type1, String type2, int hp, int atk, int def, int spAtk, int spDef, int speed){
+		
+		this.id = id;
 		this.name = name;
-
 		this.type1 = type1;
 		this.type2 = type2;
 		this.hp = hp;
@@ -21,7 +22,13 @@ public class Pokemon {
 		this.speed = speed;
 		
 	}
+	public int getId(){
+		this.id;
+	}
 	
+	public String getName(){
+		return ths.name;
+	}
 	public String getType1(){
 		return this.type1;
 	}
