@@ -20,9 +20,9 @@ public class Pokemon implements Comparable<Pokemon> {
 		this.spAtk = spAtk;
 		this.spDef = spDef;
 		this.speed = speed;
-//		this.cv1 = 1;
-//		this.cv2 = 1;
-//		this.cvTotal = 1;
+		this.cv1 = 1;
+		this.cv2 = 1;
+		this.cvTotal = 1;
 	}
 
 	public Pokemon(String name){
@@ -54,5 +54,10 @@ public class Pokemon implements Comparable<Pokemon> {
 	public int compareTo(Pokemon other) {
 		return (this.getName()).compareTo(other.getName());
 
+	}
+	
+	@Override
+	public String toString(){
+		return getName();
 	}
 }

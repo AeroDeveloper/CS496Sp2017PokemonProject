@@ -10,6 +10,7 @@ import objects.Pokemon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -22,10 +23,11 @@ public class PokeGui extends JFrame{
 	//Declare variables
 	private JFrame frame;
 	private PokemonList master;
-	private Pokemon currentPokemon;
+	private Pokemon currentPokemon,otherPokemon;
 	JTextField txtSearchField;
 	private JButton btnSearch, btnNewSearch;
 	JLabel lblId,lblName,lblType,lblHp, lblAtk, lblDef, lblSpAtk, lblSpDef, lblSpd, lblSearch;
+	JLabel lblIdOther,lblNameOther,lblTypeOther,lblHpOther, lblAtkOther, lblDefOther, lblSpAtkOther, lblSpDefOther, lblSpdOther, lblSearchOther;
 	JPanel searchPanel, resultsPanel;
 	private Insets insets;
 
@@ -110,6 +112,14 @@ public class PokeGui extends JFrame{
 		lblSpAtk = new JLabel("Sp.Atk: " +  Integer.toString(currentPokemon.getSpAtk()));
 		lblSpDef = new JLabel("Sp.Def: " +  Integer.toString(currentPokemon.getSpDef()));
 		lblSpd = new JLabel("Spd: " +  Integer.toString(currentPokemon.getSpeed()));
+		
+		
+		
+		/**
+		 * Getting results
+		 */
+		JList jlist = new JList(master);//DEBUG ONLY NEED TO CREATE RESULTS LIST FOR TARGET POKEMON
+		JScrollPane scrollPane1 = new JScrollPane(jlist);
 
 		btnNewSearch = new JButton("New Search");
 		btnNewSearch.addActionListener(new ActionListener() {
