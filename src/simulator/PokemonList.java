@@ -109,7 +109,7 @@ public class PokemonList implements Comparable<Pokemon>{
 				throw new NumberFormatException("SPD spec parse fail for " + name);
 			}
 			
-			Pokemon currPokemon = new Pokemon(name, type1, type2, hp, atk, def,spAtk,spDef,spd);//FIXME: FOR TESTING
+			Pokemon currPokemon = new Pokemon(id, name, type1, type2, hp, atk, def,spAtk,spDef,spd);//FIXME: FOR TESTING
 			pokeList.add(currPokemon);
 		}
 		return pokeList;
@@ -117,7 +117,7 @@ public class PokemonList implements Comparable<Pokemon>{
 	
 	public Pokemon searchByName(String name){
 		for(Pokemon current : this.result){
-			if((current.name).compareTo(name) == 0)//TODO implement getters and setters in pokemon object class
+			if((current.getName()).compareTo(name) == 0)//TODO implement getters and setters in pokemon object class
 				return current;
 		}
 		return null;//FIXME
