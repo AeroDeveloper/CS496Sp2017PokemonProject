@@ -11,11 +11,11 @@ import objects.PokeMove;
 import objects.Pokemon;
 
 public class PokemonList{
-	List<Pokemon> result = new ArrayList<Pokemon>();
+	List<Pokemon> master = new ArrayList<Pokemon>();
 	
 	public PokemonList(String path) throws FileNotFoundException, IOException, NumberFormatException, IllegalArgumentException{
 		try{
-			 this.result = buildPokemonList(readFile(path));
+			 this.master = buildPokemonList(readFile(path));
 		} catch (IOException|IllegalArgumentException e){
 			throw e;
 		}
@@ -115,7 +115,16 @@ public class PokemonList{
 		return pokeList;
 	}
 	
+	
 	public Pokemon searchByName(String name){
-		return this.contains(name);
+		Pokemon searchTerm = new Pokemon(name);
+		for (Pokemon check: this.master)
+			if((check).compareTo(searchTerm) == 0)
+				return check;
+		return null;
+	}
+	
+	public boolean contains(String name){
+		return (searchByName(name) != null);
 	}
 }

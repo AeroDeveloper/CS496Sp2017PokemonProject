@@ -1,11 +1,8 @@
 package simulator;
 
-import java.awt.Container;
+
 import java.awt.Insets;
 import java.awt.event.*;
-import java.io.IOException;
-
-import java.util.List;
 
 import objects.Pokemon;
 
@@ -13,123 +10,176 @@ import objects.Pokemon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 //Main class
-public class PokeGui{
+public class PokeGui extends JFrame{
+
 	//Declare variables
-	static JFrame frameInitial;
-	static Container pane;
-	static JButton btnSearch;
-	static JLabel lblId,lblName,lblSearch,lblType1,lblType2,lblHp,lblAtk,lblDef,lblSpAtk,lblSpDef,lblSpd;
-	static JTextField txtSearchField;//txtPkmnLevel
-	static Insets insets;
+	private JFrame frame;
+	private PokemonList master;
+	private Pokemon currentPokemon;
+	JTextField txtSearchField;
+	private JButton btnSearch, btnNewSearch;
+	JLabel lblId,lblName,lblType,lblHp, lblAtk, lblDef, lblSpAtk, lblSpDef, lblSpd, lblSearch;
+	JPanel searchPanel, resultsPanel;
+	private Insets insets;
 
-	public List<Pokemon> masterList;
+	public void setup()  throws Exception {
+		frame = new JFrame("Pokedex: Optimal Opponent Finder BETA");
+		frame.setSize(375, 80);
+		//frame.pack();
+		
+		searchPanel = new JPanel();
+		lblSearch = new JLabel("Search by Name");
+		txtSearchField = new JTextField(15);
 
-	public PokeGui(PokemonList pl) throws NullPointerException, IOException, IllegalArgumentException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
+		searchPanel.setLayout(null);
+		insets = frame.getInsets();
 
-		masterList = pl.result;
+		searchPanel.add(lblSearch);
+		searchPanel.add(txtSearchField);
 
-		//Create the frame
-		frameInitial = new JFrame ("Pokedex: Optimal Opponent Finder BETA");
-		//Set its size to 500x100 pixels
-		frameInitial.setSize (375,75);
-		//Prepare panel
-		pane = frameInitial.getContentPane();
-		insets = pane.getInsets();
-		//Apply the null layout
-		pane.setLayout (null);
+		btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(searchName(txtSearchField.getText())){
+					frame.setSize(400, 400);;
+					goToResults();
+				} else {
+					txtSearchField.setText("NOT FOUND!");
+				}
+			}
+		});
+		searchPanel.add(btnSearch);
 
-
-
-		//Create fields, buttons, and labels
-		lblSearch = new JLabel ("Search by Name");
-		txtSearchField = new JTextField (15);
-		btnSearch = new JButton ("Search");
-		lblId = new JLabel("");
-		lblName = new JLabel("");
-		lblType1 = new JLabel("");
-		lblType2 = new JLabel("");
-		lblHp = new JLabel("");
-		lblAtk = new JLabel("");
-		lblDef = new JLabel("");
-		lblSpAtk = new JLabel("");
-		lblSpDef = new JLabel("");
-		lblSpd = new JLabel("");
-
-
-		//Add initial components to panel
-		pane.add (lblSearch);
-		pane.add (txtSearchField);
-		pane.add (btnSearch);
-
-
-		//Place all components
 		lblSearch.setBounds (insets.left + 5, insets.top + 5, lblSearch.getPreferredSize().width, lblSearch.getPreferredSize().height);
 		txtSearchField.setBounds (lblSearch.getX() + lblSearch.getWidth() + 5, insets.top + 5, txtSearchField.getPreferredSize().width, txtSearchField.getPreferredSize().height);
-
-		//lblPkmnLvl.setBounds (txtPkmnName.getX() + txtPkmnName.getWidth() + 5, insets.top + 5, lblPkmnLvl.getPreferredSize().width, lblPkmnLvl.getPreferredSize().height);
-		//txtPkmnLevel.setBounds (lblPkmnLvl.getX() + lblPkmnLvl.getWidth() + 5, insets.top + 5, txtPkmnLevel.getPreferredSize().width, txtPkmnLevel.getPreferredSize().height);
-
-		//btnSearch.setBounds (txtPkmnLevel.getX() + txtPkmnLevel.getWidth() + 5, insets.top + 5, btnSearch.getPreferredSize().width, btnSearch.getPreferredSize().height);
 		btnSearch.setBounds (txtSearchField.getX() + txtSearchField.getWidth() + 5, insets.top + 5, btnSearch.getPreferredSize().width, btnSearch.getPreferredSize().height);
-
-		frameInitial.setVisible (true);
-
-		frameInitial.getRootPane().setDefaultButton(btnSearch);
 		
-		
-		
-		btnSearch.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{				
-				String nameInquiry = txtSearchField.getText();
-
-				Pokemon result = pl.searchByName(nameInquiry);
-				if(result == null){
-					txtSearchField.setText("ERROR");
-					
-					return;
-				} else{
-					txtSearchField.setText("");
-					updateResultsLabels(result.getId(), result.getName(),result.getType1(),result.getType2(),result.getHp(),result.getAtk(),result.getDef(),result.getSpAtk(),result.getSpDef(),result.getSpeed());
-					
-				}
-
-			}
-
-			private void updateResultsLabels(int id,String name,String type1,String type2, int hp,int atk,int def,int spAtk,int spDef,int spd) {
-				lblId.setText("ID: " + Integer.toString(id));
-				lblName.setText("Name: " + name);
-				
-				if(type2 == null){
-					lblType1.setText("Type: " + type1);
-					if(lblType2.isVisible())
-						lblType2.setVisible(false);
-				} else{
-					lblType1.setText("Type 1: " + type1);
-					lblType2.setText("Type 2: " + type2);
-				}
-				
-				lblHp.setText("HP: " + Integer.toString(hp));
-				lblAtk.setText("Atk: " + Integer.toString(atk));
-				lblDef.setText("Def: " + Integer.toString(def));
-				lblSpAtk.setText("Sp. Atk: " + Integer.toString(spAtk));
-				lblSpDef.setText("Sp. Def: " + Integer.toString(spDef));
-				lblSpd.setText("Spd: " + Integer.toString(spd));
-			}
-	});
-
-
-		//Set Look and Feel
+		frame.add(searchPanel);
+		resultsPanel = new JPanel();
 		try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
 		catch (ClassNotFoundException|InstantiationException|IllegalAccessException|UnsupportedLookAndFeelException e) {
 			throw e;
 		}
+		frame.setVisible(true);
+	}
+	
+
+	public PokeGui(PokemonList list) throws Exception {
+		setList(list);
+		setup();
+	}
+	
+
+	public void goToResults() {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				frame.remove(searchPanel);
+				frame.add(buildNewResultsPanel(resultsPanel));
+				frame.invalidate();
+				frame.revalidate();
+			}
+		});
+	}
+
+	public JPanel buildNewResultsPanel(JPanel results){
+
+		
+		results.setLayout(null);
+
+		Insets insets = results.getInsets();
+		lblId = new JLabel("ID: " + Integer.toString(currentPokemon.getId()));
+		lblName = new JLabel("Name: " + currentPokemon.getName());
+
+		if(currentPokemon.getType2() == null)
+			lblType = new JLabel("Type: " + currentPokemon.getType1());//FIXME
+		else
+			lblType = new JLabel("Type: " + currentPokemon.getType1() + "/" + currentPokemon.getType2());//May need to address
+
+		lblHp = new JLabel("HP: " +  Integer.toString(currentPokemon.getHp()));
+		lblAtk = new JLabel("Atk: " +  Integer.toString(currentPokemon.getAtk()));
+		lblDef = new JLabel("Def: " +  Integer.toString(currentPokemon.getDef()));
+		lblSpAtk = new JLabel("Sp.Atk: " +  Integer.toString(currentPokemon.getSpAtk()));
+		lblSpDef = new JLabel("Sp.Def: " +  Integer.toString(currentPokemon.getSpDef()));
+		lblSpd = new JLabel("Spd: " +  Integer.toString(currentPokemon.getSpeed()));
+
+		btnNewSearch = new JButton("New Search");
+		btnNewSearch.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				newSearch();
+			}
+		});
+		results.add(btnNewSearch);
+
+
+		results.add(lblId);
+		results.add(lblName);
+		results.add(lblType);
+		results.add(lblAtk);
+		results.add(lblDef);
+		results.add(lblSpAtk);
+		results.add(lblSpDef);
+		results.add(lblHp);
+		results.add(lblSpd);
+
+		lblName.setBounds (insets.left + 5, insets.top + 5, lblName.getPreferredSize().width, lblName.getPreferredSize().height);
+		lblId.setBounds (lblName.getX() + lblName.getWidth() + 5, insets.top + 5, lblId.getPreferredSize().width, lblId.getPreferredSize().height);
+		lblType.setBounds (insets.left + 5, lblName.getY() + lblName.getHeight() + 5, lblType.getPreferredSize().width, lblType.getPreferredSize().height);
+		lblAtk.setBounds (insets.left + 5, lblType.getY() + lblType.getHeight() + 5, lblAtk.getPreferredSize().width, lblAtk.getPreferredSize().height);
+		lblDef.setBounds (lblAtk.getX() + lblAtk.getWidth() + 5, lblAtk.getY(), lblDef.getPreferredSize().width, lblDef.getPreferredSize().height);
+		lblSpAtk.setBounds (insets.left + 5, lblAtk.getY() + lblAtk.getHeight() + 5, lblSpAtk.getPreferredSize().width, lblSpAtk.getPreferredSize().height);
+		lblSpDef.setBounds (lblSpAtk.getX() + lblSpAtk.getWidth() + 5, lblSpAtk.getY(), lblSpDef.getPreferredSize().width, lblSpDef.getPreferredSize().height);
+		lblHp.setBounds (insets.left + 5, lblSpAtk.getY() + lblSpAtk.getHeight() + 5, lblHp.getPreferredSize().width, lblHp.getPreferredSize().height);
+		lblSpd.setBounds (lblHp.getX() + lblHp.getWidth() + 5, lblHp.getY(), lblSpd.getPreferredSize().width, lblSpd.getPreferredSize().height);
+		return results;
+	}
+	
+	
+	protected void newSearch() {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				frame.getContentPane().removeAll();
+				frame.add(searchPanel);
+				frame.invalidate();
+				frame.revalidate();
+			}
+		});
+	}
+
+
+	public boolean searchName(String name){
+		if((master.contains(name))){
+			setPokemon(master.searchByName(name));
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void setPokemon(Pokemon p){
+		this.currentPokemon = p;
+	}
+	public Pokemon getPokemon(){
+		return this.currentPokemon;
+	}
+
+	public void setList(PokemonList list){
+		this.master = list;
+	}
+	public PokemonList getList(){
+		return this.master;
+	}
 }
 
-}
+

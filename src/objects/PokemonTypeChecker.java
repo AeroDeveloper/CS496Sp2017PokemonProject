@@ -1,5 +1,9 @@
 package objects;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+
 public class PokemonTypeChecker {
 	static PokemonType normal = new PokemonType.Builder(Element.NORMAL)
             .vulnerableTo(Element.FIGHTING).immuneTo(Element.GHOST).generate();
@@ -151,41 +155,41 @@ public class PokemonTypeChecker {
 //        frame.setVisible(true);
 //    }
 
-//    public static void displayAttributes(PokemonType primary, PokemonType secondary) {
-//        if (primary == secondary) { secondary = none; }
-//
+    public static void displayAttributes(PokemonType primary, PokemonType secondary) {
+        if (primary == secondary) { secondary = none; }
+
 //        immunities.setText("");
 //        vulnerabilities.setText("");
 //        resistances.setText("");
-//        StringBuilder immuneBuilder = new StringBuilder(""),
-//                vulnerableBuilder = new StringBuilder(""),
-//                resistBuilder = new StringBuilder("");
-//
-//        for(Map.Entry<Element, Double> entry : primary.getMultipliers().entrySet()){
-//            for(Map.Entry<Element, Double> entry2 : secondary.getMultipliers().entrySet()) {
-//                if (entry.getKey() == entry2.getKey()) {
-//
-//                    if (entry.getValue() * entry2.getValue() == 0.0) {
-//                        immuneBuilder.append(entry.getKey().name).append(", ");
-//                    }
-//                    else if (entry.getValue() * entry2.getValue()  <= 0.5 ) {
-//                        resistBuilder.append(entry.getKey().name).append(", ");
-//                    }
-//                    else if (entry.getValue() * entry2.getValue()  >= 2.0) {
-//                        vulnerableBuilder.append(entry.getKey().name).append(", ");
-//                    }
-//                }
-//            }
-//        }
-//
-//        finalizeBuilder(immuneBuilder);
-//        finalizeBuilder(resistBuilder);
-//        finalizeBuilder(vulnerableBuilder);
-//
+        StringBuilder immuneBuilder = new StringBuilder(""),
+                vulnerableBuilder = new StringBuilder(""),
+                resistBuilder = new StringBuilder("");
+
+        for(Map.Entry<Element, Double> entry : primary.getMultipliers().entrySet()){
+            for(Map.Entry<Element, Double> entry2 : secondary.getMultipliers().entrySet()) {
+                if (entry.getKey() == entry2.getKey()) {
+
+                    if (entry.getValue() * entry2.getValue() == 0.0) {
+                        immuneBuilder.append(entry.getKey().name).append(", ");
+                    }
+                    else if (entry.getValue() * entry2.getValue()  <= 0.5 ) {
+                        resistBuilder.append(entry.getKey().name).append(", ");
+                    }
+                    else if (entry.getValue() * entry2.getValue()  >= 2.0) {
+                        vulnerableBuilder.append(entry.getKey().name).append(", ");
+                    }
+                }
+            }
+        }
+
+        finalizeBuilder(immuneBuilder);
+        finalizeBuilder(resistBuilder);
+        finalizeBuilder(vulnerableBuilder);
+
 //        immunities.setText(immuneBuilder.toString());
 //        vulnerabilities.setText(vulnerableBuilder.toString());
 //        resistances.setText(resistBuilder.toString());
-//    }
+    }
 
     public static PokemonType getPokemonType(String name) {
         for (PokemonType p : pokemonTypes) {
