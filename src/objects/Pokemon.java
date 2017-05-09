@@ -32,4 +32,13 @@ public class Pokemon {
 	public int getSpDef(){ return this.spDef; }
 	public int getSpeed(){ return this.speed; }
 	
+	@Override
+	public int compareTo(Pokemon o1) {
+		// TODO Auto-generated method stub
+		
+		
+		return 0;
+	}
+	
+	
 }
