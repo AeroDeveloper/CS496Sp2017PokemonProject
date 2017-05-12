@@ -1,5 +1,6 @@
 package simulator;
 
+import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,23 +8,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import objects.PokeMove;
 import objects.Pokemon;
 
-public class PokemonList{
-	List<Pokemon> master = new ArrayList<Pokemon>();
-//	List<Pokemon> byName = searchByName(master);
-	
-	
-	public PokemonList(String path) throws FileNotFoundException, IOException, NumberFormatException, IllegalArgumentException{
-		try{
-			 this.master = buildPokemonList(readFile(path));
-		} catch (IOException|IllegalArgumentException e){
-			throw e;
-		}
-	}
+public class Pokedex {
 
-	private List<String>readFile(String Path)throws FileNotFoundException, IOException{
+	public static void main(String[] args) {
+		
+		//create Set List
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PokeGui frame = new PokeGui();
+					frame.setMasterList(buildPokemonList(readFile("src/Data/Gen1Pokemon.csv")));
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public static List<String> readFile(String Path)throws FileNotFoundException, IOException{
 		
 		List<String> rawData = new ArrayList<String>();
 		try {
@@ -44,9 +50,9 @@ public class PokemonList{
 		
 		return rawData;
 	}
-
-	private List<Pokemon> buildPokemonList(List<String> rawDataList) throws NumberFormatException, IllegalArgumentException{
-		List<Pokemon> pokeList = new ArrayList<Pokemon>();
+	
+	private static ArrayList<Pokemon> buildPokemonList(List<String> rawDataList) throws NumberFormatException, IllegalArgumentException{
+		ArrayList<Pokemon> pokeList = new ArrayList<Pokemon>();
 		int id,hp,atk,def,spAtk,spDef,spd;
 		String name,type1,type2;
 
@@ -85,22 +91,10 @@ public class PokemonList{
 			try{ spd = Integer.parseInt(tokens[9]); } 
 			catch(NumberFormatException e){ throw new NumberFormatException("SPD spec parse fail for " + name);	}
 			
-			Pokemon currPokemon = new Pokemon(id, name, type1, type2, hp, atk, def,spAtk,spDef,spd);//FIXME: FOR TESTING
+			Pokemon currPokemon = new Pokemon(id, name, type1, type2, hp, atk, def,spAtk,spDef,spd);
 			pokeList.add(currPokemon);
 		}
 		return pokeList;
 	}
-	
-	
-	public Pokemon searchByName(String name){
-		Pokemon searchTerm = new Pokemon(name);
-		for (Pokemon check: this.master)
-			if((check).compareTo(searchTerm) == 0)
-				return check;
-		return null;
-	}
-	
-	public boolean contains(String name){
-		return (searchByName(name) != null);
-	}
 }
+//TODO Add blank/default constructor for pokemon
